@@ -5,6 +5,16 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
+var today = new Date();
+var birthDate = new Date('1998-07-01');
+var age = today.getFullYear() - birthDate.getFullYear();
+var m = today.getMonth() - birthDate.getMonth();
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+}
+
+var edad = age;
+
 const StyledAboutSection = styled.section`
   max-width: 900px;
 
@@ -61,7 +71,7 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--green);
+    
 
     &:hover,
     &:focus {
@@ -69,8 +79,9 @@ const StyledPic = styled.div`
       outline: 0;
 
       &:after {
-        top: 15px;
-        left: 15px;
+        top: 4px;
+        left: 4px;
+        z-index: 10;
       }
 
       .img {
@@ -82,8 +93,8 @@ const StyledPic = styled.div`
     .img {
       position: relative;
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1);
+      
+      
       transition: var(--transition);
     }
 
@@ -99,16 +110,16 @@ const StyledPic = styled.div`
     }
 
     &:before {
-      top: 0;
+      top: 1;
       left: 0;
       background-color: var(--navy);
       mix-blend-mode: screen;
     }
 
     &:after {
-      border: 2px solid var(--green);
-      top: 20px;
-      left: 20px;
+      border: 3px solid var(--green);
+      top: 0px;
+      left: 0px;
       z-index: -1;
     }
   }
@@ -126,43 +137,28 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = ['JavaScript', 'Java', 'Python', 'PHP', 'WordPress', 'Adobe Illustrator', 'Adobe Photoshop','Figma'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+      <h2 className="numbered-heading">Cosas sobre mi</h2>
 
       <div className="inner">
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar contenido audiovisual y también me gusta mucho el diseño web.
+              <br/>
+              Comencé a aprender lo que se hasta ahora desde el 2017 y realmente he acogido un amor muy grande por lo que hago 👌, sobre todo estos últimos años. Por eso, una de mis metas actuales es lanzar cursos gratuitos.<br/>
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              Me gusta compartir lo que sé cuando tengo tiempo, por eso he creado este {' '}
+              <a href="/pensieve">Blog</a>{' '}
+              donde escribo las cosas que he aprendido, estoy seguro de que le puede servir a alguien 🙌  
             </p>
 
-            <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
-            </p>
-
-            <p>Here are a few technologies I’ve been working with recently:</p>
+           <p>Estas son algunas de las herramientas y tecnologías que manejo actualmente:</p>
           </div>
 
           <ul className="skills-list">

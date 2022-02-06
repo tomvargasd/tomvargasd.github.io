@@ -11,6 +11,7 @@ const StyledHeroSection = styled.section`
   align-items: flex-start;
   min-height: 100vh;
   padding: 0;
+  margin-top: 4%;
 
   @media (max-width: 480px) and (min-height: 700px) {
     padding-bottom: 10vh;
@@ -18,7 +19,7 @@ const StyledHeroSection = styled.section`
 
   h1 {
     margin: 0 0 30px 4px;
-    color: var(--green);
+    color: var(--blue);
     font-family: var(--font-mono);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
@@ -32,6 +33,7 @@ const StyledHeroSection = styled.section`
     margin-top: 10px;
     color: var(--slate);
     line-height: 0.9;
+    
   }
 
   p {
@@ -41,6 +43,7 @@ const StyledHeroSection = styled.section`
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
+    border-radius: 30px;
     margin-top: 50px;
   }
 `;
@@ -58,29 +61,25 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Brittany Chiang.</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
+  const one = <h1>Hola, mi nombre es</h1>;
+  const two = <h2 className="big-heading">TOMÁS VARGAS</h2>;
+  const three = <h3 className="big-heading">SOFTWARE DEVELOPER</h3>;
   const four = (
     <>
       <p>
-        I’m a software engineer specializing in building (and occasionally designing) exceptional
-        digital experiences. Currently, I’m focused on building accessible, human-centered products
-        at{' '}
-        <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-          Upstatement
-        </a>
-        .
+        Soy desarrollador de software y diseñador gráfico 💻<br/>
+        Siempre estoy autoeducandome con cursos y prácticas de las cosas que me apasionan, en resumen todo sobre la tecnología y el diseño.<br></br>
+        Mis hobbies son básicamente los videojuegos 🎮 como <b>TLOZ</b> y la música 🎶
       </p>
     </>
   );
   const five = (
     <a
       className="email-link"
-      href="https://www.newline.co/courses/build-a-spotify-connected-app"
+      href="/pensieve"
       target="_blank"
       rel="noreferrer">
-      Check out my course!
+      Visita mi Blog!
     </a>
   );
 

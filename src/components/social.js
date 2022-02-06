@@ -17,7 +17,8 @@ const StyledSocialList = styled.ul`
     content: '';
     display: block;
     width: 1px;
-    height: 90px;
+    height: 0px;
+    visibility: hidden;
     margin: 0 auto;
     background-color: var(--light-slate);
   }
@@ -36,8 +37,8 @@ const StyledSocialList = styled.ul`
       }
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

@@ -40,6 +40,7 @@ const StyledProjectsSection = styled.section`
   .more-button {
     ${({ theme }) => theme.mixins.button};
     margin: 80px auto 0;
+    border-radius:30px;
   }
 `;
 
@@ -70,7 +71,7 @@ const StyledProject = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
+    border-radius: 15px ;
     background-color: var(--light-navy);
     transition: var(--transition);
   }
@@ -264,11 +265,8 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
+      <h2 ref={revealTitle}>Otros proyectos</h2>
 
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link>
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (
@@ -302,10 +300,16 @@ const Projects = () => {
       </ul>
 
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
-        Show {showMore ? 'Less' : 'More'}
+        MOSTRAR {showMore ? 'MENOS' : 'MÁS'}
       </button>
     </StyledProjectsSection>
   );
 };
 
 export default Projects;
+
+/*  in line 268
+      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+        view the archive
+      </Link>
+*/

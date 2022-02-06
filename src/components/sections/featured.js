@@ -156,7 +156,7 @@ const StyledProject = styled.li`
     position: relative;
     z-index: 2;
     padding: 25px;
-    border-radius: var(--border-radius);
+    border-radius: 15px;
     background-color: var(--light-navy);
     color: var(--light-slate);
     font-size: var(--fz-lg);
@@ -256,14 +256,14 @@ const StyledProject = styled.li`
     a {
       width: 100%;
       height: 100%;
-      background-color: var(--green);
+      background: transparent;
       border-radius: var(--border-radius);
       vertical-align: middle;
 
       &:hover,
       &:focus {
-        background: transparent;
         outline: 0;
+        width: 99%;
 
         &:before,
         .img {
@@ -283,21 +283,23 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--navy);
-        mix-blend-mode: screen;
+        
       }
     }
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
-
+      
+      
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
+        
+        mix-blend-mode: multiply;
+        filter: grayscale(75%) contrast(1) brightness(75%);
+        
+        
       }
     }
   }
@@ -348,7 +350,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Principales proyectos
       </h2>
 
       <StyledProjectsGrid>
@@ -362,7 +364,7 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">Proyecto destacado</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
@@ -383,8 +385,8 @@ const Featured = () => {
 
                     <div className="project-links">
                       {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
+                        <a href={cta} aria-label="GitHub Link">
+                          <Icon name="GitHub" />
                         </a>
                       )}
                       {github && (
@@ -392,7 +394,7 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && !cta && (
+                      {external && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>

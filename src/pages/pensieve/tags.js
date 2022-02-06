@@ -43,10 +43,10 @@ const TagsPage = ({
     <StyledTagsContainer>
       <span className="breadcrumb">
         <span className="arrow">&larr;</span>
-        <Link to="/pensieve">All memories</Link>
+        <Link to="/pensieve">Todos los temas</Link>
       </span>
 
-      <h1>Tags</h1>
+      <h1>Etiquetas</h1>
       <ul className="fancy-list">
         {group.map(tag => (
           <li key={tag.fieldValue}>

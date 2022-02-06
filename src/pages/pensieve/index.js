@@ -66,7 +66,7 @@ const StyledPost = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
+    border-radius: 15px;
     transition: var(--transition);
     background-color: var(--light-navy);
 
@@ -79,17 +79,11 @@ const StyledPost = styled.li`
   .post__icon {
     ${({ theme }) => theme.mixins.flexBetween};
     color: var(--green);
-    margin-bottom: 30px;
-    margin-left: -5px;
-
-    svg {
-      width: 40px;
-      height: 40px;
-    }
+    
   }
 
   .post__title {
-    margin: 0 0 10px;
+    margin: 5px 0 10px;
     color: var(--lightest-slate);
     font-size: var(--fz-xxl);
 
@@ -151,11 +145,11 @@ const PensievePage = ({ location, data }) => {
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
+          <h1 className="big-heading">TECH BLOG</h1>
           <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
-              a collection of memories
-            </a>
+            <p>
+              una colección de lo que sé
+            </p>
           </p>
         </header>
 
@@ -171,7 +165,7 @@ const PensievePage = ({ location, data }) => {
                   <div className="post__inner">
                     <header>
                       <div className="post__icon">
-                        <IconBookmark />
+                      
                       </div>
                       <h5 className="post__title">
                         <Link to={slug}>{title}</Link>

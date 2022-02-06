@@ -25,6 +25,7 @@ const StyledSubtitle = styled.h2`
 const StyledHomeButton = styled(Link)`
   ${({ theme }) => theme.mixins.bigButton};
   margin-top: 40px;
+  border-radius: 30px;
 `;
 
 const NotFoundPage = ({ location }) => {
@@ -43,8 +44,8 @@ const NotFoundPage = ({ location }) => {
   const content = (
     <StyledMainContainer className="fillHeight">
       <StyledTitle>404</StyledTitle>
-      <StyledSubtitle>Page Not Found</StyledSubtitle>
-      <StyledHomeButton to="/">Go Home</StyledHomeButton>
+      <StyledSubtitle>Esta página no existe 😥</StyledSubtitle>
+      <StyledHomeButton to="/">REGRESAR A CASA</StyledHomeButton>
     </StyledMainContainer>
   );
 

@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  background-color: rgba(25, 28, 34, 0.85);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -38,7 +38,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(10, 25, 47, 0.85);
+        background-color: rgba(25, 28, 34, 0.85);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -66,14 +66,14 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--green);
+      color: var(--blue);
       width: 42px;
       height: 42px;
 
       &:hover,
       &:focus {
         svg {
-          fill: var(--green-tint);
+          fill: var(--blue);
         }
       }
 
@@ -89,6 +89,7 @@ const StyledNav = styled.nav`
 const StyledLinks = styled.div`
   display: flex;
   align-items: center;
+  list-style-type: none;
 
   @media (max-width: 768px) {
     display: none;
@@ -103,16 +104,16 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
+      
       font-size: var(--fz-xs);
 
       a {
         padding: 10px;
 
         &:before {
-          content: '0' counter(item) '.';
+          
           margin-right: 5px;
-          color: var(--green);
+          
           font-size: var(--fz-xxs);
           text-align: right;
         }
@@ -123,6 +124,9 @@ const StyledLinks = styled.div`
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
+    padding-inline: 30px;
+    border-radius: 30px;
+    border-width: 2px;
     font-size: var(--fz-xs);
   }
 `;
@@ -174,7 +178,7 @@ const Nav = ({ isHome }) => {
 
   const ResumeLink = (
     <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
+      CV
     </a>
   );
 
@@ -186,14 +190,14 @@ const Nav = ({ isHome }) => {
             {Logo}
 
             <StyledLinks>
-              <ol>
+              <ul>
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
                       <Link to={url}>{name}</Link>
                     </li>
                   ))}
-              </ol>
+              </ul>
               <div>{ResumeLink}</div>
             </StyledLinks>
 

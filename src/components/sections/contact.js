@@ -38,6 +38,7 @@ const StyledContactSection = styled.section`
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
+    border-radius: 30px;
   }
 `;
 
@@ -55,17 +56,16 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 className="numbered-heading overline">¿Algo más?</h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 className="title">Contáctame</h2>
 
       <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        No dudes en dejarme un mensaje cuando quieras, estoy abierto a nuevas oportunidades y retos que me permitan mejorar en el ámbito personal y profesional 👍
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+        ¡Saludame!
       </a>
     </StyledContactSection>
   );

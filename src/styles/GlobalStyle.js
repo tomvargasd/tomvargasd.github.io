@@ -192,7 +192,7 @@ const GlobalStyle = createGlobalStyle`
       position: relative;
       bottom: 4px;
       counter-increment: section;
-      content: '0' counter(section) '.';
+      
       margin-right: 10px;
       color: var(--green);
       font-family: var(--font-mono);
@@ -210,10 +210,10 @@ const GlobalStyle = createGlobalStyle`
       display: block;
       position: relative;
       top: -5px;
-      width: 300px;
-      height: 1px;
+      width: 450px;
+      height: 2px;
       margin-left: 20px;
-      background-color: var(--lightest-navy);
+      background-color: var(--lightest-slate);
 
       @media (max-width: 1080px) {
         width: 200px;
