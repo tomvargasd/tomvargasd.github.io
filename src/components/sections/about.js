@@ -147,15 +147,15 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar contenido audiovisual y también me gusta mucho el diseño web.
+              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar contenido audiovisual, también me gusta mucho el diseño web.
               <br/>
-              Comencé a aprender lo que se hasta ahora desde el 2017 y realmente he acogido un amor muy grande por lo que hago 👌, sobre todo estos últimos años. Por eso, una de mis metas actuales es lanzar cursos gratuitos.<br/>
+              Comencé a aprender lo que sé hasta ahora desde el 2017 y he acogido un amor muy grande por lo que hago 👌, más aún estos últimos años, por eso, una de mis metas actuales es lanzar cursos gratuitos.<br/>
             </p>
 
             <p>
               Me gusta compartir lo que sé cuando tengo tiempo, por eso he creado este {' '}
               <a href="/pensieve">Blog</a>{' '}
-              donde escribo las cosas que he aprendido, estoy seguro de que le puede servir a alguien 🙌  
+              donde escribo las cosas que voy aprendiendo o que ya sé, estoy seguro de que le puede servir a alguien 🙌  
             </p>
 
            <p>Estas son algunas de las herramientas y tecnologías que manejo actualmente:</p>
