@@ -11,7 +11,7 @@ tags:
 
 # 🔦 Importancia de la ingeniería de requerimientos
 
-Muchas veces hemos escuchado lo importante que es la **ingeniería de software**, por lo general, es algo tedioso o complejo para algunos, sin embargo, para hacer las cosas bien en cualquier aspecto, es **vital** tener una visión general y conocimiento amplio sobre el tema o los temas a realizar.
+Muchas veces hemos escuchado lo importante que es la **ingeniería de software**, por lo general, es algo tedioso o complejo para algunos, sin embargo, para hacer las cosas bien en cualquier aspecto, es **vital** tener una visión general y conocimiento amplio sobre el tema o los temas a realizar. 
 
 Vemos temas como el **levantamiento de información**, diagramas **UML**, la documentación, etc. pero es algo que de manera directa o indirecta ya estamos familiarizados, al menos si de desarrollo de **software** nos referimos, por ejemplo, cuando tienes una asignación de alguna práctica o deber, lo primero que ves son instrucciones como "crear una aplicación en python que permita ingresar 2 números y que calcule la multiplicación de ambos."
 En este caso se pueden **identificar** dos requerimientos:
