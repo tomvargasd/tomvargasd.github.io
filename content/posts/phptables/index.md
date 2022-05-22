@@ -1,7 +1,7 @@
 ---
 title: Llenar una tabla con php
 description: Desde la base de datos a tu página web con php
-date: 2022-22-05
+date: 2020-05-22
 draft: false
 slug: /pensieve/llenar-una-tabla-con-php
 tags:
