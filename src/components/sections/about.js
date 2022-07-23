@@ -172,7 +172,7 @@ const About = () => {
               className="img"
               src="../../images/me.jpg"
               width={500}
-              quality={95}
+              quality={90}
               formats={['AUTO', 'WEBP', 'AVIF']}
               alt="Headshot"
             />
