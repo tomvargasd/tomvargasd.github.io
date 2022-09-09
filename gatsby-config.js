@@ -23,7 +23,7 @@ module.exports = {
       options: {
         name: 'Tomás Vargas',
         short_name: 'Tomvargas',
-        start_url: '/index.html 200',
+        start_url: '/index.html',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
         display: 'minimal-ui',
