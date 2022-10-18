@@ -8,6 +8,7 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo } from '@components/icons';
+//import variables_alt from './variables-alt';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -17,7 +18,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(25, 28, 34, 0.85);
+  background-color: var(--navy-shadow);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -38,7 +39,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(25, 28, 34, 0.85);
+        background-color: var(--navy-shadow);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 

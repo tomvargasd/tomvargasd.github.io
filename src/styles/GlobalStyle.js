@@ -1,12 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 import fonts from './fonts';
 import variables from './variables';
+import variables_alt from './variables-alt';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
+//set const theme if getItem() is 1
+const Theme = localStorage.getItem('theme') === '0' ? variables : variables_alt;
+
 const GlobalStyle = createGlobalStyle`
   ${fonts};
-  ${variables};
+  ${Theme};
 
   html {
     box-sizing: border-box;
@@ -445,5 +449,6 @@ const GlobalStyle = createGlobalStyle`
 
   ${PrismStyles};
 `;
+
 
 export default GlobalStyle;

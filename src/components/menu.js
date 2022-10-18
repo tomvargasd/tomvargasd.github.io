@@ -254,6 +254,7 @@ const Menu = () => {
 
         <StyledSidebar menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
           <nav ref={navRef}>
+          
             {navLinks && (
               <ol>
                 {navLinks.map(({ url, name }, i) => (
@@ -265,7 +266,6 @@ const Menu = () => {
                 ))}
               </ol>
             )}
-
             <a href="/resume.pdf" className="resume-link">
               Resume
             </a>
