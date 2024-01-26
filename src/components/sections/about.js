@@ -137,7 +137,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript', 'Java', 'Python', 'PHP', 'WordPress', 'Adobe Illustrator', 'Adobe Photoshop','Figma'];
+  const skills = ['Flutter', 'PHP', 'Python', 'Javascript', 'React.js', 'UI/UX', 'Unity'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -147,18 +147,18 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar contenido audiovisual, también me gusta mucho el diseño web.
+              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar interfaces, estoy aprendiendo UX.
               <br/>
-              Comencé a aprender lo que sé hasta ahora desde el 2017 y he acogido un amor muy grande por lo que hago 👌, más aún estos últimos años, por eso, una de mis metas actuales es lanzar cursos gratuitos.<br/>
+              Comencé a aprender lo que sé hasta ahora desde el 2017 y he acogido un amor muy grande por lo que hago 👌, más aún estos últimos años, por eso, una de mis metas actuales es crear cosas increíbles para la comunidad.<br/>
             </p>
 
             <p>
               Me gusta compartir lo que sé cuando tengo tiempo, por eso he creado este {' '}
               <a href="/pensieve">Blog</a>{' '}
-              donde escribo las cosas que voy aprendiendo o que ya sé, estoy seguro de que le puede servir a alguien 🙌  
+              donde encontraras contenido de que voy aprendiendo o que ya sé, estoy seguro de que te podría servir 🙌  
             </p>
 
-           <p>Estas son algunas de las herramientas y tecnologías que manejo actualmente:</p>
+           <p>Estas son algunas de las tecnologías que manejo actualmente:</p>
           </div>
 
           <ul className="skills-list">

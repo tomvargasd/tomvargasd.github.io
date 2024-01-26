@@ -6,7 +6,7 @@ import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
 //set const theme if getItem() is 1
-const Theme = localStorage.getItem('theme') === '0' ? variables : variables_alt;
+const Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
 
 const GlobalStyle = createGlobalStyle`
   ${fonts};

@@ -130,7 +130,26 @@ const StyledLinks = styled.div`
     border-width: 2px;
     font-size: var(--fz-xs);
   }
+
+  .themechanger{
+    font-size:var(--fz-xl);
+    margin-left: -250px!important;
+    cursor:pointer;
+  }
+
 `;
+console.log(localStorage.getItem('theme') === '0' ? "dark" : "ligth");
+
+const ChangeTheme = ()=>{
+  let _var = localStorage.getItem('theme');
+  if(_var === '0') {
+      _var = '1';
+  }else{
+    _var = '0';
+  }
+  localStorage.setItem('theme', _var);
+  window.location.reload(false);
+}
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
@@ -209,7 +228,7 @@ const Nav = ({ isHome }) => {
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo}</>
+                  <>{Logo} <StyledLinks><div onClick={ChangeTheme} className='themechanger'>{localStorage.getItem('theme') === '0' ? '🌙':'☀️'}</div></StyledLinks></>
                 </CSSTransition>
               )}
             </TransitionGroup>
