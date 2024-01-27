@@ -138,7 +138,6 @@ const StyledLinks = styled.div`
   }
 
 `;
-console.log(localStorage.getItem('theme') === '0' ? "dark" : "ligth");
 
 const ChangeTheme = ()=>{
   let _var = localStorage.getItem('theme');
