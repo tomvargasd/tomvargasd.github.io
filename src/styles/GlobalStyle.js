@@ -8,6 +8,7 @@ import PrismStyles from './PrismStyles';
 //set const theme if getItem() is 1
 var Theme;
 try {
+  localStorage.getItem('theme') == null ? localStorage.setItem('theme', '0') : false;
   Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
 } catch (e) {
   console.log(e)
@@ -15,7 +16,7 @@ try {
 
 const GlobalStyle = createGlobalStyle`
   ${fonts};
-  ${Theme};
+  ${Theme == null ? variables : Theme};
 
   html {
     box-sizing: border-box;
