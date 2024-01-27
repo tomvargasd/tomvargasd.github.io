@@ -6,7 +6,7 @@ import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
 //set const theme if getItem() is 1
-const Theme = variables;
+var Theme;
 try {
   Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
 } catch (e) {
