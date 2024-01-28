@@ -67,7 +67,7 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        Soy desarrollador de software y diseñador gráfico 💻<br/>
+        Soy desarrollador de software y diseñador web 💻<br/>
         Siempre estoy autoeducandome con cursos y prácticas de las cosas que me apasionan, en resumen todo sobre la tecnología y el diseño.<br></br>
         Mis hobbies son básicamente los videojuegos 🎮 como <b>TLOZ</b> y la música 🎶
       </p>
