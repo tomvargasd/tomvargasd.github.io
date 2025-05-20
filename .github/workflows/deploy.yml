@@ -1,0 +1,22 @@
+name: Despliegue Gatsby al VPS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Ejecutar script en el VPS
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: 167.86.105.241
+        username: tomvargasd
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          /home/tomvargasd/deploy-gatsby.sh
