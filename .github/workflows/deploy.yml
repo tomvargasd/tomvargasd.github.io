@@ -17,6 +17,6 @@ jobs:
       with:
         host: 167.86.105.241
         username: tomvargasd
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.VPS_TOMAS }}
         script: |
           /home/tomvargasd/deploy-gatsby.sh
