@@ -51,9 +51,14 @@ const StyledPostContent = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
-  const { frontmatter, html } = data.markdownRemark;
+  const frontmatter = data?.markdownRemark?.frontmatter || {};
+  const html = data?.markdownRemark?.html || '';
   const { title, date, tags } = frontmatter;
 
+  if (!data?.markdownRemark) {
+    return <p>Artículo no encontrado</p>
+  }
+  
   return (
     <Layout location={location}>
       <Helmet title={title} />

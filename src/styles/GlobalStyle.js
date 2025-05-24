@@ -8,8 +8,10 @@ import PrismStyles from './PrismStyles';
 //set const theme if getItem() is 1
 var Theme;
 try {
-  localStorage.getItem('theme') == null ? localStorage.setItem('theme', '0') : false;
-  Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
+  if (typeof window !== "undefined") {
+    localStorage.getItem('theme') == null ? localStorage.setItem('theme', '0') : false;
+    Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
+  }
 } catch (e) {
   console.log(e)
 }
@@ -17,6 +19,15 @@ try {
 const GlobalStyle = createGlobalStyle`
   ${fonts};
   ${Theme == null ? variables : Theme};
+
+   :root {
+    --green: #64ffda;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --lightest-navy: #233554;
+    --border-radius: 4px;
+    --fz-sm: 14px;
+  }
 
   html {
     box-sizing: border-box;

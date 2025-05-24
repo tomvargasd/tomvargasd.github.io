@@ -8,7 +8,6 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { IconLogo } from '@components/icons';
-//import variables_alt from './variables-alt';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -34,7 +33,7 @@ const StyledHeader = styled.header`
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
-    props.scrollDirection === 'up' &&
+      props.scrollDirection === 'up' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -44,7 +43,7 @@ const StyledHeader = styled.header`
       `};
 
     ${props =>
-    props.scrollDirection === 'down' &&
+      props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
@@ -105,16 +104,12 @@ const StyledLinks = styled.div`
     li {
       margin: 0 5px;
       position: relative;
-      
       font-size: var(--fz-xs);
 
       a {
         padding: 10px;
-
         &:before {
-          
           margin-right: 5px;
-          
           font-size: var(--fz-xxs);
           text-align: right;
         }
@@ -131,45 +126,48 @@ const StyledLinks = styled.div`
     font-size: var(--fz-xs);
   }
 
-  .themechanger{
-    font-size:var(--fz-xl);
-    margin-left: -250px!important;
-    cursor:pointer;
+  .themechanger {
+    font-size: var(--fz-xl);
+    margin-left: 15px;
+    cursor: pointer;
   }
-
 `;
-
-const ChangeTheme = () => {
-  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-    let _var = localStorage.getItem('theme');
-    _var = _var === '0' ? '1' : '0';
-    localStorage.setItem('theme', _var);
-    window.location.reload(false);
-  }
-};
-
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const [theme, setTheme] = useState(null);
 
   const handleScroll = () => {
     setScrolledToTop(window.pageYOffset < 50);
   };
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme') || '0';
+      setTheme(storedTheme);
     }
+  }, []);
+
+  const toggleTheme = () => {
+    if (typeof window !== 'undefined') {
+      const newTheme = theme === '0' ? '1' : '0';
+      localStorage.setItem('theme', newTheme);
+      setTheme(newTheme);
+      window.location.reload(false);
+    }
+  };
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
 
     const timeout = setTimeout(() => {
       setIsMounted(true);
     }, 100);
 
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       clearTimeout(timeout);
       window.removeEventListener('scroll', handleScroll);
@@ -200,44 +198,27 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
-  const [theme, setTheme] = useState(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme') || '0';
-      setTheme(storedTheme);
-    }
-  }, []);
-
-  const ChangeTheme = () => {
-    if (typeof window !== 'undefined') {
-      const newTheme = theme === '0' ? '1' : '0';
-      localStorage.setItem('theme', newTheme);
-      setTheme(newTheme);
-      window.location.reload(false);
-    }
-  };
-
-
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
         {prefersReducedMotion ? (
           <>
             {Logo}
-
             <StyledLinks>
-              <ul>
-                {navLinks &&
-                  navLinks.map(({ url, name }, i) => (
-                    <li key={i}>
-                      <Link to={url}>{name}</Link>
-                    </li>
-                  ))}
-              </ul>
+              <ol>
+                {navLinks.map(({ url, name }, i) => (
+                  <li key={i}>
+                    <Link to={url}>{name}</Link>
+                  </li>
+                ))}
+              </ol>
               <div>{ResumeLink}</div>
+              {theme !== null && (
+                <div onClick={toggleTheme} className="themechanger">
+                  {theme === '0' ? '🌙' : '☀️'}
+                </div>
+              )}
             </StyledLinks>
-
             <Menu />
           </>
         ) : (
@@ -245,46 +226,34 @@ const Nav = ({ isHome }) => {
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                <>
-                  {Logo}
-                  <StyledLinks>
-                    {theme !== null && (
-                      <div onClick={ChangeTheme} className='themechanger'>
-                        {theme === '0' ? '🌙' : '☀️'}
+                  <>
+                    {Logo}
+                    <StyledLinks>
+                      <ol>
+                        {navLinks.map(({ url, name }, i) => (
+                          <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                            <li style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                              <Link to={url}>{name}</Link>
+                            </li>
+                          </CSSTransition>
+                        ))}
+                      </ol>
+                      <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                        {ResumeLink}
                       </div>
-                    )}
-                  </StyledLinks>
-                </>
+                      {theme !== null && (
+                        <div
+                          onClick={toggleTheme}
+                          className="themechanger"
+                          style={{ transitionDelay: `${(navLinks.length + 1) * 100}ms` }}>
+                          {theme === '0' ? '🌙' : '☀️'}
+                        </div>
+                      )}
+                    </StyledLinks>
+                  </>
                 </CSSTransition>
               )}
             </TransitionGroup>
-
-            <StyledLinks>
-              <ol>
-                <TransitionGroup component={null}>
-                  {isMounted &&
-                    navLinks &&
-                    navLinks.map(({ url, name }, i) => (
-                      <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
-                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
-                        </li>
-                      </CSSTransition>
-                    ))}
-                </TransitionGroup>
-              </ol>
-
-              <TransitionGroup component={null}>
-                {isMounted && (
-                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                      {ResumeLink}
-                    </div>
-                  </CSSTransition>
-                )}
-              </TransitionGroup>
-            </StyledLinks>
-
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
