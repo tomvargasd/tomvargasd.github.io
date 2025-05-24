@@ -139,16 +139,15 @@ const StyledLinks = styled.div`
 
 `;
 
-const ChangeTheme = ()=>{
-  let _var = localStorage.getItem('theme');
-  if(_var === '0') {
-      _var = '1';
-  }else{
-    _var = '0';
+const ChangeTheme = () => {
+  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+    let _var = localStorage.getItem('theme');
+    _var = _var === '0' ? '1' : '0';
+    localStorage.setItem('theme', _var);
+    window.location.reload(false);
   }
-  localStorage.setItem('theme', _var);
-  window.location.reload(false);
-}
+};
+
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
@@ -201,6 +200,25 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme') || '0';
+      setTheme(storedTheme);
+    }
+  }, []);
+
+  const ChangeTheme = () => {
+    if (typeof window !== 'undefined') {
+      const newTheme = theme === '0' ? '1' : '0';
+      localStorage.setItem('theme', newTheme);
+      setTheme(newTheme);
+      window.location.reload(false);
+    }
+  };
+
+
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
@@ -227,7 +245,16 @@ const Nav = ({ isHome }) => {
             <TransitionGroup component={null}>
               {isMounted && (
                 <CSSTransition classNames={fadeClass} timeout={timeout}>
-                  <>{Logo} <StyledLinks><div onClick={ChangeTheme} className='themechanger'>{localStorage.getItem('theme') === '0' ? '🌙':'☀️'}</div></StyledLinks></>
+                <>
+                  {Logo}
+                  <StyledLinks>
+                    {theme !== null && (
+                      <div onClick={ChangeTheme} className='themechanger'>
+                        {theme === '0' ? '🌙' : '☀️'}
+                      </div>
+                    )}
+                  </StyledLinks>
+                </>
                 </CSSTransition>
               )}
             </TransitionGroup>
