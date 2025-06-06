@@ -1,0 +1,16 @@
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore Node.js modules (they will be installed in the Docker image)
+node_modules
+
+# Ignore local development files
+.cache
+public
+
+# Ignore Husky files
+.husky
+
+# Ignore environment variables file if present
+.env*
