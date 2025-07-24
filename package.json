@@ -14,7 +14,12 @@
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
-    "serve": "gatsby serve -H 0.0.0.0 -p 3020"
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "gatsby serve -H 0.0.0.0 -p 3020",
+    "serve": "gatsby serve -H 0.0.0.0 -p 3020",
+    "clean": "gatsby clean",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
