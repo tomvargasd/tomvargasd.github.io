@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "greeting": "Hola, mi nombre es",
+    "name": "TOMÁS VARGAS",
+    "title": "FULLSTACK DEVELOPER",
+    "description": "Hola! 👋 soy desarrollador de software Fullstack y diseñador web 💻<br/>Constantemente estoy autoeducandome con cursos o prácticas de las cosas que me interesan.<br/>Mis hobbies son básicamente los videojuegos 🎮 como <b>TLOZ</b> y escuchar música mientras trabajo 🎶 aunque aveces prefiero ver Youtube con videos de temas relacionados al campo.",
+    "ctaText": "Entra a mi blog",
+    "ctaLink": "/pensieve"
+  },
+  "about": {
+    "sectionTitle": "Sobre mi",
+    "birthDate": "1998-07-01",
+    "paragraph1": "Actualmente tengo {age} años y me gusta aprender varias cosas según mi objetivo en cuestión, Disfruto desarrollar software y diseñar interfaces pero ahora con la IA mi productividad ha aumentado considerablemente.<br/>Comencé a aprender lo que sé hasta ahora desde el 2017 y he acogido un amor muy grande por lo que hago 👌, más aún estos últimos años, por eso, una de mis metas actuales es crear cosas increíbles para la comunidad.",
+    "paragraph2": "Me gusta compartir lo que sé cuando tengo tiempo, por eso he creado este {blogLink} donde encontraras algunas cosas interesantes.<br/>Estoy implementando soluciones de Visión artificial con IA para crear cosas incríbles de reconocimiento en tiempo real por medio de cámaras de seguridad, compartiré mis avances y conocimientos.",
+    "blogLinkText": "Blog",
+    "blogLinkUrl": "/pensieve",
+    "skillsLabel": "Estas son algunas de las tecnologías que manejo actualmente:",
+    "skills": ["Ultralytics", "Computer Vision", "YLO26", "Python", "Flutter", "PHP", "Javascript"],
+    "profileImage": "me.png"
+  },
+  "contact": {
+    "overline": "¿Algo más?",
+    "title": "Contáctame",
+    "description": "No dudes en dejarme un mensaje cuando quieras, estoy abierto a nuevas oportunidades y retos que me permitan mejorar en el ámbito personal y profesional 👍",
+    "buttonText": "¡Saludame!"
+  },
+  "nav": {
+    "resumeLink": "/resume.pdf",
+    "resumeText": "CV"
+  },
+  "email": "tomvargasd@gmail.com",
+  "socialMedia": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/tomvargasd"
+    },
+    {
+      "name": "Behance",
+      "url": "https://www.behance.net/tomvargasd"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/in/tomvargas"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/tomvargasd"
+    }
+  ],
+  "navLinks": [
+    {
+      "name": "Blog",
+      "url": "/pensieve"
+    },
+    {
+      "name": "Sobre mi",
+      "url": "/#about"
+    },
+    {
+      "name": "Experiencia",
+      "url": "/#jobs"
+    },
+    {
+      "name": "Proyectos",
+      "url": "/#projects"
+    },
+    {
+      "name": "Contáctame",
+      "url": "/#contact"
+    }
+  ]
+}

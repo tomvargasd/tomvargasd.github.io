@@ -5,20 +5,10 @@ import variables_alt from './variables-alt';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
-//set const theme if getItem() is 1
-var Theme;
-try {
-  if (typeof window !== "undefined") {
-    localStorage.getItem('theme') == null ? localStorage.setItem('theme', '0') : false;
-    Theme = localStorage.getItem('theme') === '1' ? variables_alt : variables;
-  }
-} catch (e) {
-  console.log(e)
-}
-
 const GlobalStyle = createGlobalStyle`
   ${fonts};
-  ${Theme == null ? variables : Theme};
+  ${variables};
+  ${variables_alt};
 
    :root {
     --green: #64ffda;
@@ -125,11 +115,38 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  @keyframes tealMove {
+    0%   { transform: translate(0px, 0px) scale(1); }
+    25%  { transform: translate(40px, -30px) scale(1.04); }
+    50%  { transform: translate(-25px, 25px) scale(0.97); }
+    75%  { transform: translate(30px, 35px) scale(1.03); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .teal-gradient-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 700px 600px at 18% 55%, rgba(0, 200, 220, 0.09) 0%, transparent 100%),
+      radial-gradient(ellipse 580px 700px at 82% 28%, rgba(0, 155, 200, 0.07) 0%, transparent 100%);
+    animation: tealMove 28s ease-in-out infinite;
+  }
+
+  html.light-theme .teal-gradient-bg {
+    background:
+      radial-gradient(ellipse 700px 600px at 18% 55%, rgba(2, 119, 189, 0.07) 0%, transparent 100%),
+      radial-gradient(ellipse 580px 700px at 82% 28%, rgba(0, 130, 180, 0.05) 0%, transparent 100%);
+  }
+
   #root {
     min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   main {

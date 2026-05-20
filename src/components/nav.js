@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-import { navLinks } from '@config';
+import { navLinks, siteData } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
@@ -153,10 +153,16 @@ const Nav = ({ isHome }) => {
 
   const toggleTheme = () => {
     if (typeof window !== 'undefined') {
-      const newTheme = theme === '0' ? '1' : '0';
-      localStorage.setItem('theme', newTheme);
-      setTheme(newTheme);
-      window.location.reload(false);
+      const isLight = document.documentElement.classList.contains('light-theme');
+      if (isLight) {
+        document.documentElement.classList.remove('light-theme');
+        localStorage.setItem('theme', '0');
+        setTheme('0');
+      } else {
+        document.documentElement.classList.add('light-theme');
+        localStorage.setItem('theme', '1');
+        setTheme('1');
+      }
     }
   };
 
@@ -193,8 +199,8 @@ const Nav = ({ isHome }) => {
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      CV
+    <a className="resume-button" href={siteData.nav.resumeLink} target="_blank" rel="noopener noreferrer">
+      {siteData.nav.resumeText}
     </a>
   );
 

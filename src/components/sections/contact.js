@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { srConfig, email } from '@config';
+import { srConfig, email, siteData } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -45,6 +45,7 @@ const StyledContactSection = styled.section`
 const Contact = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { contact } = siteData;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -56,16 +57,14 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">¿Algo más?</h2>
+      <h2 className="numbered-heading overline">{contact.overline}</h2>
 
-      <h2 className="title">Contáctame</h2>
+      <h2 className="title">{contact.title}</h2>
 
-      <p>
-        No dudes en dejarme un mensaje cuando quieras, estoy abierto a nuevas oportunidades y retos que me permitan mejorar en el ámbito personal y profesional 👍
-      </p>
+      <p>{contact.description}</p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        ¡Saludame!
+        {contact.buttonText}
       </a>
     </StyledContactSection>
   );

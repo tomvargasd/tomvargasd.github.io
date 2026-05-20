@@ -4,4 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
- // You can delete this file if you're not using it
+import React from 'react';
+
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    <script
+      key="theme-init"
+      dangerouslySetInnerHTML={{
+        __html: `
+          try {
+            if (localStorage.getItem('theme') === '1') {
+              document.documentElement.classList.add('light-theme');
+            }
+          } catch(e) {}
+        `,
+      }}
+    />,
+  ]);
+};

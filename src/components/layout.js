@@ -49,6 +49,7 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <Head />
+      <div className="teal-gradient-bg" aria-hidden="true" />
 
       <div id="root">
         <ThemeProvider theme={theme}>

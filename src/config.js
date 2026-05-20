@@ -1,50 +1,10 @@
+const siteData = require('../content/site-data.json');
+
 module.exports = {
-  email: 'tomvargasd@gmail.com',
-
-  socialMedia: [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/tomvargasd',
-    },
-    {
-      name: 'Behance',
-      url: 'https://www.behance.net/tomvargasd',
-    },
-    
-    {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/tomvargas',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/tomvargasd',
-    },
-   
-    
-  ],
-
-  navLinks: [
-    {
-      name: 'Blog',
-      url: '/pensieve',
-    },
-    {
-      name: 'Sobre mi',
-      url: '/#about',
-    },
-    {
-      name: 'Experiencia',
-      url: '/#jobs',
-    },
-    {
-      name: 'Proyectos',
-      url: '/#projects',
-    },
-    {
-      name: 'Contáctame',
-      url: '/#contact',
-    },
-  ],
+  siteData,
+  email: siteData.email,
+  socialMedia: siteData.socialMedia,
+  navLinks: siteData.navLinks,
 
   colors: {
     green: '#93DDFB',

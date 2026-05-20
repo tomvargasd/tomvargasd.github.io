@@ -3,7 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
-// import { email } from '@config';
+import { siteData } from '@config';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -51,6 +51,7 @@ const StyledHeroSection = styled.section`
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { hero } = siteData;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -61,25 +62,19 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hola, mi nombre es</h1>;
-  const two = <h2 className="big-heading">TOMÁS VARGAS</h2>;
-  const three = <h3 className="big-heading">SOFTWARE DEVELOPER</h3>;
+  const one = <h1>{hero.greeting}</h1>;
+  const two = <h2 className="big-heading">{hero.name}</h2>;
+  const three = <h3 className="big-heading">{hero.title}</h3>;
   const four = (
-    <>
-      <p>
-        Soy desarrollador de software y diseñador web 💻<br/>
-        Siempre estoy autoeducandome con cursos y prácticas de las cosas que me apasionan, en resumen todo sobre la tecnología y el diseño.<br></br>
-        Mis hobbies son básicamente los videojuegos 🎮 como <b>TLOZ</b> y la música 🎶
-      </p>
-    </>
+    <p dangerouslySetInnerHTML={{ __html: hero.description }} />
   );
   const five = (
     <a
       className="email-link"
-      href="/pensieve"
+      href={hero.ctaLink}
       target="_blank"
       rel="noreferrer">
-      Visita mi Blog!
+      {hero.ctaText}
     </a>
   );
 

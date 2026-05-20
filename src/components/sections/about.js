@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
-import { srConfig } from '@config';
+import { srConfig, siteData } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
-var today = new Date();
-var birthDate = new Date('1998-07-01');
-var age = today.getFullYear() - birthDate.getFullYear();
-var m = today.getMonth() - birthDate.getMonth();
-if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
+function calcAge(birthDateStr) {
+  const today = new Date();
+  const birth = new Date(birthDateStr);
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return age;
 }
-
-var edad = age;
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -128,6 +128,26 @@ const StyledPic = styled.div`
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { about } = siteData;
+  const edad = calcAge(about.birthDate);
+
+  const data = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        nodes {
+          relativePath
+          name
+          childImageSharp {
+            gatsbyImageData(width: 500, quality: 95, formats: [AUTO, WEBP, AVIF])
+          }
+        }
+      }
+    }
+  `);
+
+  const profileImageName = about.profileImage.replace(/\.[^/.]+$/, '');
+  const profileNode = data.allFile.nodes.find(n => n.name === profileImageName);
+  const profileImage = profileNode ? getImage(profileNode) : null;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -137,45 +157,40 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Flutter', 'PHP', 'Python', 'Javascript', 'React.js', 'UI/UX', 'Unity'];
+  const p1Html = about.paragraph1.replace('{age}', edad);
+  const p2Html = about.paragraph2.replace(
+    '{blogLink}',
+    `<a href="${about.blogLinkUrl}">${about.blogLinkText}</a>`,
+  );
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">Cosas sobre mi</h2>
+      <h2 className="numbered-heading">{about.sectionTitle}</h2>
 
       <div className="inner">
         <StyledText>
           <div>
-            <p>
-              Hola! 👋 mi nombre es Tomás Vargas, actualmente tengo {edad} años y me apasiona aprender lo que me gusta, realmente disfruto desarrollar software y diseñar interfaces, estoy aprendiendo UX.
-              <br/>
-              Comencé a aprender lo que sé hasta ahora desde el 2017 y he acogido un amor muy grande por lo que hago 👌, más aún estos últimos años, por eso, una de mis metas actuales es crear cosas increíbles para la comunidad.<br/>
-            </p>
-
-            <p>
-              Me gusta compartir lo que sé cuando tengo tiempo, por eso he creado este {' '}
-              <a href="/pensieve">Blog</a>{' '}
-              donde encontraras contenido de que voy aprendiendo o que ya sé, estoy seguro de que te podría servir 🙌  
-            </p>
-
-           <p>Estas son algunas de las tecnologías que manejo actualmente:</p>
+            <p dangerouslySetInnerHTML={{ __html: p1Html }} />
+            <p dangerouslySetInnerHTML={{ __html: p2Html }} />
+            <p>{about.skillsLabel}</p>
           </div>
 
           <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+            {about.skills && about.skills.map((skill, i) => <li key={i}>{skill}</li>)}
           </ul>
         </StyledText>
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
-              className="img"
-              src="../../images/me.jpg"
-              width={500}
-              quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
-            />
+            {profileImage ? (
+              <GatsbyImage
+                className="img"
+                image={profileImage}
+                alt="Headshot"
+              />
+            ) : (
+              <img className="img" src={`/${about.profileImage}`} alt="Headshot" />
+            )}
           </div>
         </StyledPic>
       </div>
