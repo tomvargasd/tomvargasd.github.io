@@ -1,7 +1,7 @@
 name: gatsby-site-production
 
 env:
-  NODE_ENV: production
+  NODE_ENV: development
 
 ports:
   - 3020:3020
