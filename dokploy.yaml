@@ -1,13 +1,13 @@
 name: gatsby-site-production
 
 env:
-  NODE_ENV: development
+  NODE_ENV: production
 
 ports:
   - 3020:3020
 
 build:
-  command: npm install && npm run build
+  command: npm install && npx gatsby clean && npm run build
 
 run:
   command: npm run serve
